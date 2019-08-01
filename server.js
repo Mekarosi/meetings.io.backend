@@ -15,6 +15,26 @@ mongo.connect("mongodb+srv://mekarosi:caroline2411%@cluster0-jiqvx.mongodb.net/t
        }  
 });
 
+
+app.post("/meetingschedule", (req, res) => {
+    const meetingDetails = req.body
+    const meetingschedule = new setmeeting(
+        {
+            to: meetingschedule.to,
+            location: meetingschedule.location,
+            subject: meetingschedule.subject,
+            timestart: meetingschedule.timestart,
+            amountTime: meetingschedule.amountTime,
+            body: meetingDetails.body
+        }
+    )
+    meetingschedule.save((err,doc) => {
+        if(err) console.log(err)
+        return res.json(doc)
+    })
+})
+
+
 app.listen(PORT, err => {
     if (err) {
      console.log(err);
